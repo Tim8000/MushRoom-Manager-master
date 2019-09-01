@@ -1,0 +1,32 @@
+﻿@model MushRoom_Manager.ViewModels.MushroomTypesViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Mushroom</h2>
+
+
+
+@using (Html.BeginForm("Save", "Mushrooms"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.MushroomType.Name)
+        @Html.TextAreaFor(m => m.MushroomType.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MushroomType.PackageWeight)
+        @Html.TextAreaFor(m => m.MushroomType.PackageWeight, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.MushroomType.Id)
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+@*     <div class="form-group"> *@
+@*         @Html.LabelFor(m => m.MushroomType.Id) *@
+@*         @Html.DropDownListFor(m => m.MushroomType.Id, new SelectList(Model.MushroomTypes, "Id", "Name"), "Select MushroomType ", new { @class = "form-control" }) *@
+@*     </div> *@
+
+
+}
+

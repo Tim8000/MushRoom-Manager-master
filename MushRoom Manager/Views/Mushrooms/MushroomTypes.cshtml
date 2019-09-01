@@ -1,0 +1,40 @@
+﻿@model List<MushRoom_Manager.Models.MushroomType>
+@{
+    ViewBag.Title = "MushroomTypes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MushroomTypes</h2>
+
+
+
+@*  @using (Html.BeginForm("Create", "MushroomTypes"))  *@
+@*  {  *@
+@*      <div class="form-group">  *@
+@*         @Html.LabelFor(m => m.Name)  *@
+@*         @Html.TextBoxFor(m =>m.MushroomType.Name)  *@
+@*      </div>  *@
+@*  }  *@
+
+<table class="table table-bordered table-hover"  style="border-radius:45px">
+    <thead>
+    <tr>
+        <th>Наименование товара</th>
+        <th>Вес</th>
+        <th>Удалить</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var mush in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(mush.Name, "Edit", new { Id = mush.Id })</td>
+            <td>@string.Format("Вес товара в кг : {0}", mush.PackageWeight)</td>
+            <td>@Html.ActionLink("Delete", "Delete", new {Id = mush.Id }, new {@class = "btn btn-danger"})</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@Html.ActionLink("Создать новый", "New", "Mushrooms", new{@class ="btn btn-info"})
+
