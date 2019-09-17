@@ -51,7 +51,7 @@ namespace MushRoom_Manager.Controllers
         }
 
         //
-        // GET: /Manage/Index
+        // GET: /Manage/ClientsList
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =

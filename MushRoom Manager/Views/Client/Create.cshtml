@@ -1,0 +1,23 @@
+﻿@model MushRoom_Manager.ViewModels.ClientsViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Новый Клиент</h2>
+
+@using (@Html.BeginForm("Save", "Client"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Client.Name, "Имя")
+        @Html.TextBoxFor(c => c.Client.Name, new{@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Client.Phone, "Телефон")
+        @Html.TextBoxFor(c => c.Client.Phone, new {@class="form-control" })
+    </div>
+    <br/>
+    <div>
+        <button type="submit" class="btn btn-info">Сохранить</button>
+    </div>
+}

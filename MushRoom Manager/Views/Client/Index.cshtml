@@ -1,0 +1,32 @@
+﻿@using MushRoom_Manager.Models
+@model System.Data.Entity.DbSet<MushRoom_Manager.Models.Client>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Клиенты</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Телефон</th>
+        <td>Удалить</td>
+    </tr>
+
+    </thead>
+    <tbody>
+    @foreach (var client in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(client.Name, "Edit", new {Id = client.Id}) </td>
+            <td>@Html.ActionLink(client.Phone, "Edit", new {Id = client.Id})</td>
+            <td>@Html.ActionLink("Удалить", "Delete", new {Id = client.Id}, new { @class ="btn btn-warning"})</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<br/>
+
+@Html.ActionLink("Создать контакт", "Create",new { }, new {@class = "btn btn-warning"})

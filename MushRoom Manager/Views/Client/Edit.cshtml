@@ -1,0 +1,21 @@
+﻿@model MushRoom_Manager.Models.Client
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+@using (Html.BeginForm("Save", "Client"))
+{
+    <label class="label label-info">Имя</label>
+    @Html.TextBoxFor(c => c.Name, new {@class="form-control"})
+    @Html.HiddenFor(c => c.Id)<br/>
+    <label class="label label-info">Телефон</label>
+    @Html.TextBoxFor(c => c.Phone, new{@class="form-control"})
+
+
+    <br/>
+    <br/>
+    <button class="btn btn-danger" type="submit">Сохранить изменения</button>
+}

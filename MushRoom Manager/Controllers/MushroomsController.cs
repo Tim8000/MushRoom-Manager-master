@@ -53,7 +53,6 @@ namespace MushRoom_Manager.Controllers
 
             if (mushroomtype.Id == null)
             {
-                mushroomtype.Id =Convert.ToByte( randomId.Next(10, 20));
                 _context.MushroomTypes.Add(mushroomtype);
                 _context.SaveChanges();
             }
@@ -61,18 +60,14 @@ namespace MushRoom_Manager.Controllers
             {
                 var mush = _context.MushroomTypes.SingleOrDefault(m => m.Id == mushroomtype.Id);
                 mush.Name = mushroomtype.Name;
+
                 _context.SaveChanges();
             }
 
             return RedirectToAction("MushroomTypes");
         }
 
-//        public ActionResult SaveChanges(MushroomType mushroomtype)
-//        {
-//            
-//
-//            return RedirectToAction("MushroomTypes");
-//        }
+
 
         public ActionResult Edit(int id)
         {
