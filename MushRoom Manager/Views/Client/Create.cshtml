@@ -1,23 +1,32 @@
-﻿@model MushRoom_Manager.ViewModels.ClientsViewModel
+﻿@model MushRoom_Manager.Models.Client
+@* @model MushRoom_Manager.ViewModels.ClientsViewModel *@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Новый Клиент</h2>
+@if (Model == null)
+{
+    <h2>Новый Клиент</h2>
+}
+else
+{
+    <h2>@Model.Name</h2>
+}
 
 @using (@Html.BeginForm("Save", "Client"))
 {
     <div class="form-group">
-        @Html.LabelFor(c => c.Client.Name, "Имя")
-        @Html.TextBoxFor(c => c.Client.Name, new{@class="form-control"})
+        @Html.LabelFor(c => c.Name, "Имя")
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(c => c.Client.Phone, "Телефон")
-        @Html.TextBoxFor(c => c.Client.Phone, new {@class="form-control" })
+        @Html.LabelFor(c => c.Phone, "Телефон")
+        @Html.TextBoxFor(c => c.Phone, new { @class = "form-control" })
     </div>
-    <br/>
+    <br />
     <div>
+        @Html.HiddenFor(c => c.Id)
         <button type="submit" class="btn btn-info">Сохранить</button>
     </div>
 }

@@ -54,7 +54,6 @@ namespace MushRoom_Manager.Controllers
             {
                 _context.Clients.Add(client);
                 _context.SaveChanges();
-                
             }
             else
             {
@@ -91,9 +90,23 @@ namespace MushRoom_Manager.Controllers
         }
 
 
-        public ActionResult Create()
+        public ActionResult Create(int? Id)
         {
-          return View("Create");
+            try
+            {
+                if (Id == null)
+                {
+                    return View("Create");
+                }
+                var client = _context.Clients.SingleOrDefault(c => c.Id == Id);
+                return View(client);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw new Exception("Edit method error", e);
+            }
+            // vreturn View("Create");
         }
     }
 }

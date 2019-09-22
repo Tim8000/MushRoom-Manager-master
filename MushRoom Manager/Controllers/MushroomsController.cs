@@ -22,15 +22,15 @@ namespace MushRoom_Manager.Controllers
             _context.Dispose();
         }
 
-        public ActionResult New()
+        public ActionResult New(int? Id)
         {
-            var mushroomTypes = _context.MushroomTypes.ToList();
-            var viewModel = new MushroomTypesViewModel
+            if (Id == 0)
             {
-                MushroomTypes = mushroomTypes
-            };
+                return View("New");
+            }
+            var mushroom = _context.MushroomTypes.SingleOrDefault(m => m.Id == Id);
+            return View(mushroom);
             
-            return View(viewModel);
         }
 
         // GET: MushroomTypes
@@ -53,6 +53,7 @@ namespace MushRoom_Manager.Controllers
 
             if (mushroomtype.Id == null)
             {
+                mushroomtype.Id =Convert.ToByte(randomId.Next(20, 100));
                 _context.MushroomTypes.Add(mushroomtype);
                 _context.SaveChanges();
             }
@@ -60,6 +61,7 @@ namespace MushRoom_Manager.Controllers
             {
                 var mush = _context.MushroomTypes.SingleOrDefault(m => m.Id == mushroomtype.Id);
                 mush.Name = mushroomtype.Name;
+                mush.PackageWeight = mushroomtype.PackageWeight;
 
                 _context.SaveChanges();
             }
@@ -82,7 +84,7 @@ namespace MushRoom_Manager.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("MushroomTypes");
-        }
+        } 
 
        
     }

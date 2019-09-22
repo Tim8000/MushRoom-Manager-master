@@ -20,8 +20,8 @@
     @foreach (var client in Model)
     {
         <tr>
-            <td>@Html.ActionLink(client.Name, "Edit", new {Id = client.Id})</td>
-            <td>@Html.ActionLink(client.Phone, "Edit", new {Id = client.Id})</td>
+            <td>@Html.ActionLink(client.Name, "Create", new {Id = client.Id})</td>
+            <td>@Html.ActionLink(client.Phone, "Create", new {Id = client.Id})</td>
             <td>@Html.ActionLink("Удалить", "Delete", new {Id = client.Id}, new { @class ="btn btn-warning"})</td>
         </tr>
     }

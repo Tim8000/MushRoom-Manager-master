@@ -1,31 +1,36 @@
-﻿@model MushRoom_Manager.ViewModels.MushroomTypesViewModel
+﻿@model MushRoom_Manager.Models.MushroomType
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Новый тип</h2>
+@if (Model == null)
+{
+    <h2>Новый тип грибов</h2>
+}
+else
+{
+    <h2>@Model.Name</h2>
+}
 
 
 
 @using (Html.BeginForm("Save", "Mushrooms"))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.MushroomType.Name)
-        @Html.TextAreaFor(m => m.MushroomType.Name, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Name)
+        @Html.TextAreaFor(m => m.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.MushroomType.PackageWeight)
-        @Html.TextAreaFor(m => m.MushroomType.PackageWeight, new { @class = "form-control" })
-        @Html.TextBoxFor(m => m.MushroomType.Id)
+        @Html.LabelFor(m => m.PackageWeight)
+        @Html.TextAreaFor(m => m.PackageWeight, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Id)
     </div>
     <div>
+        @Html.HiddenFor(m => m.Id)
         <button type="submit">Save</button>
     </div>
-@*     <div class="form-group"> *@
-@*         @Html.LabelFor(m => m.MushroomType.Id) *@
-@*         @Html.DropDownListFor(m => m.MushroomType.Id, new SelectList(Model.MushroomTypes, "Id", "Name"), "Select MushroomType ", new { @class = "form-control" }) *@
-@*     </div> *@
+
 
 
 }
